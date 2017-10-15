@@ -1,0 +1,20 @@
+{
+  "name": "testing-javascript-for-nodejs-with-mocha",
+  "version": "1.0.0",
+  "description": "Learning how to test JavaScript (Node.js) applications with Mocha.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha './test/**/*.js'"
+  },
+  "keywords": [
+    "TDD",
+    "testing",
+    "JS",
+    "Node"
+  ],
+  "author": "Vinicius Covre",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^4.0.1"
+  }
+}
