@@ -4,7 +4,7 @@
   "description": "Learning how to test JavaScript (Node.js) applications with Mocha.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './test/**/*.js'"
+    "test": "mocha './test/**/*.test.js'"
   },
   "keywords": [
     "TDD",
@@ -17,6 +17,7 @@
   "dependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "sinon": "^4.0.1"
   }
 }

@@ -13,6 +13,10 @@ class AuthController {
             setTimeout(() => {resolve(roles.indexOf(neededRole) >=0 )}, 0);
         })
     }
+
+    getIndex(req, res) {
+        res.render('index');
+    }
 }
 
 module.exports = AuthController;

@@ -1,12 +1,11 @@
 const assert = require('assert');
 const chai = require('chai');
 const expect = chai.expect;
-const should = chai.should();
-const chaiAsPromised = require('chai-as-promised')
+const chaiAsPromised = require('chai-as-promised');
+const sinon          = require('sinon');
 const AuthController = require('../../controllers/auth');
 
 chai.use(chaiAsPromised);
-chai.should();
 
 describe('AuthConroller', () => {
     var authController;
@@ -25,7 +24,7 @@ describe('AuthConroller', () => {
         });
     });
 
-    describe.skip('isAuthorizedAsync', () => {
+    describe('isAuthorizedAsync', () => {
         it('should return false if not authorized', function(done) {
             this.timeout(2500);
             authController.isAuthorizedAsync(['user'], 'admin', (isAuth) => {
@@ -38,7 +37,22 @@ describe('AuthConroller', () => {
     describe('isAuthorizedPromise', () => {
         it('should return false if not authorized', function() {
             isAuth = authController.isAuthorizedPromise(['root'], 'admin');
-            return isAuth.should.eventually.be.false;
+            return expect(isAuth).to.eventually.be.false;
+        });
+        it('should return true if authorized', function() {
+            isAuth = authController.isAuthorizedPromise(['root', 'admin'], 'admin');
+            return expect(isAuth).to.eventually.be.true;
+        });
+    });
+
+    describe('getIndex', () => {
+        it('should render index', () => {
+            var req = {};
+            var res = {
+                render: sinon.spy()
+            };
+            authController.getIndex(req, res);
+            expect(res.render.firstCall.args[0]).to.equal('index');
         });
     });
 });
